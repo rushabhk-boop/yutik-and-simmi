@@ -1,0 +1,208 @@
+@import "tailwindcss";
+
+@theme {
+  --font-script: "Great Vibes", cursive;
+  --font-serif: "Cormorant Garamond", "Palatino Linotype", Palatino, serif;
+  --font-sans: Outfit, "Avenir Next", "Segoe UI", sans-serif;
+  --font-label: Cinzel, "Times New Roman", serif;
+  --color-gold: #c8a46a;
+  --color-gold-deep: #8d6a34;
+  --color-peach: #f6d7c8;
+  --color-ivory: #fff8ef;
+  --color-cream: #f5ebdd;
+  --color-olive: #424b32;
+  --color-brown: #75604d;
+  --color-rose: #e9b9aa;
+  --color-ink: #2a3124;
+  --color-terracotta: #864e3c;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  background: #fbf6ef;
+  color: #5c4638;
+  font-family: var(--font-sans);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+main > div > section {
+  background: #fbf6ef;
+}
+
+body.invitation-locked {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+}
+
+body.invitation-open {
+  overflow-x: clip;
+}
+
+::selection {
+  background: #e9b9aa;
+  color: #2a3124;
+}
+
+:focus-visible {
+  outline: 2px solid #8d6a34;
+  outline-offset: 3px;
+}
+
+img {
+  max-width: 100%;
+}
+
+.invitation-card {
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.8) inset,
+    0 30px 70px rgba(66, 40, 18, 0.22),
+    0 2px 10px rgba(66, 40, 18, 0.12);
+}
+
+.reveal-item {
+  opacity: 0;
+}
+
+.seal-disc {
+  border-radius: 999px;
+  box-shadow:
+    0 14px 30px rgba(80, 16, 28, 0.38),
+    0 0 0 6px rgba(200, 164, 106, 0.18);
+  transition: box-shadow 0.3s ease;
+}
+
+.seal-pulse {
+  animation: seal-pulse 2.6s ease-in-out infinite;
+}
+
+.seal-button:hover .seal-pulse,
+.seal-button:focus-visible .seal-pulse {
+  animation: none;
+}
+
+.seal-button:hover .seal-disc,
+.seal-button:focus-visible .seal-disc {
+  transform: scale(1.04);
+  box-shadow:
+    0 16px 34px rgba(80, 16, 28, 0.42),
+    0 0 0 8px rgba(200, 164, 106, 0.3),
+    0 0 26px rgba(200, 164, 106, 0.55);
+}
+
+.sheen::after {
+  content: "";
+  position: absolute;
+  top: -10%;
+  bottom: -10%;
+  width: 28%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.48), transparent);
+  transform: translateX(-160%) skewX(-16deg);
+  animation: sheen 7.5s ease-in-out 0.45s 2;
+}
+
+.shimmer-stroke {
+  animation: dash 6.5s linear infinite;
+}
+
+.silk-sway {
+  animation: silk-sway 8.5s ease-in-out infinite;
+}
+
+.brooch-glow {
+  animation: brooch-glow 2.8s ease-in-out infinite;
+}
+
+.hero-ink {
+  text-shadow:
+    0 1px 0 rgba(255, 248, 239, 0.65),
+    0 12px 28px rgba(255, 248, 239, 0.45);
+}
+
+.twinkle {
+  animation: twinkle 2.6s ease-in-out infinite;
+}
+
+@keyframes brooch-glow {
+  0%,
+  100% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 0.75;
+  }
+}
+
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0.15;
+    transform: scale(0.7);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes seal-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.035);
+  }
+}
+
+@keyframes sheen {
+  0% {
+    transform: translateX(-160%) skewX(-16deg);
+  }
+  42%,
+  100% {
+    transform: translateX(460%) skewX(-16deg);
+  }
+}
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: -100;
+  }
+}
+
+@keyframes silk-sway {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, 8px, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .seal-pulse,
+  .sheen::after,
+  .shimmer-stroke,
+  .silk-sway,
+  .brooch-glow,
+  .twinkle {
+    animation: none !important;
+  }
+}
